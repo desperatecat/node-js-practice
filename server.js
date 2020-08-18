@@ -1,4 +1,5 @@
 const http = require('http');
+const fs = require('fs');
 
 const server = http.createServer((req, res) => {
     console.log(req.url, req.method);
@@ -6,12 +7,18 @@ const server = http.createServer((req, res) => {
     //set header content type
     res.setHeader('Content-Type', 'text/html');
 
-    //write content we want to send back to the browser
-    res.write('<p>hello, ninjas!</p>');
-    res.write('<p>hello again, ninjas!</p>');
-
-    //end the response
-    res.end();
+    //send an html file
+    fs.readFile('./view/index.html', (err, data) => {
+        if(err) {
+            console.log(err);
+            //end the response
+            res.end();
+        } else {
+            //write content we want to send back to the browser
+            res.write(data);
+            res.end();
+        }
+    })
 });
 
 server.listen(3000, 'localhost', () => {
