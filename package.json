@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/desperatecat/node-js-practice/issues"
   },
-  "homepage": "https://github.com/desperatecat/node-js-practice#readme"
+  "homepage": "https://github.com/desperatecat/node-js-practice#readme",
+  "dependencies": {
+    "lodash": "^4.17.20"
+  }
 }
