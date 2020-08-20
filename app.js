@@ -10,7 +10,7 @@ app.listen(3000);
 
 app.get('/', (req, res) => {
     //res.send('<p>home page</p>');
-    res.sendFile('./views/index.html', { root: __dirname });
+    res.render('index');
 });
 
 app.get('/about', (req, res) => {
