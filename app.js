@@ -24,7 +24,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(morgan('dev'));
 
 app.use((req, res, next) => {
   res.locals.path = req.path;
