@@ -19,6 +19,18 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  console.log('in the next middleware');
+  next();
+});
+
+app.use(morgan('dev'));
+
+app.use((req, res, next) => {
+  res.locals.path = req.path;
+  next();
+});
+
 app.get('/', (req, res) => {
     const blogs = [
         {title: 'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur'},
