@@ -29,7 +29,7 @@ app.get('/add-blog', (req, res) => {
 
   //create document
   const blog = new Blog({
-    title: 'new blog',
+    title: 'new blog 2',
     snippet: 'about my new blog',
     body: 'more about my new blog'
   })
@@ -44,6 +44,16 @@ app.get('/add-blog', (req, res) => {
     });
 });
 
+
+app.get('/all-blogs', (req, res) => {
+  Blog.find()
+    .then(result => {
+      res.send(result);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+});
 
 app.get('/', (req, res) => {
     const blogs = [
