@@ -16,7 +16,7 @@ const blogSchema = new Schema({
     }
 }, { timestamps: true });
 
-
+//'Blog' is the singular of the collection name (blogs)
 const Blog = mongoose.model('Blog', blogSchema);
 
 module.exports = Blog;
