@@ -6,7 +6,7 @@ const app = express();
 
 //connect to DB
 const dbURI = 'mongodb+srv://netninja_admin:Test1234!@cluster0.bkzkh.mongodb.net/node-tuts?retryWrites=true&w=majority';
-mongoose.connect();
+mongoose.connect(db);
 
 //register view engine
 app.set('view engine', 'ejs');
