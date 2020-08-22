@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const Blog = require('./models/blog');
 
 const app = express();
 
@@ -23,8 +24,25 @@ app.use((req, res, next) => {
 });
 
 
+// mongoose & mongo tests
+app.get('/add-blog', (req, res) => {
 
+  //create document
+  const blog = new Blog({
+    title: 'new blog',
+    snippet: 'about my new blog',
+    body: 'more about my new blog'
+  })
 
+  //sync save to DB
+  blog.save()
+    .then(result => {
+      res.send(result);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
 
 
 app.get('/', (req, res) => {
