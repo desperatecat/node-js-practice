@@ -55,6 +55,16 @@ app.get('/all-blogs', (req, res) => {
     })
 });
 
+app.get('/single-blog', (req, res) => {
+  Blog.findById('5f407aaa95931c12ec631191')
+    .then(result => {
+      res.send(result);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
 app.get('/', (req, res) => {
     const blogs = [
         {title: 'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur'},
