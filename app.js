@@ -1,11 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
-
+const mongoose = require('mongoose');
 
 const app = express();
 
 //connect to DB
-const dbURI = 'mongodb+srv://netninja_admin:Test1234!@cluster0.bkzkh.mongodb.net/<dbname>?retryWrites=true&w=majority';
+const dbURI = 'mongodb+srv://netninja_admin:Test1234!@cluster0.bkzkh.mongodb.net/node-tuts?retryWrites=true&w=majority';
+mongoose.connect();
 
 //register view engine
 app.set('view engine', 'ejs');
