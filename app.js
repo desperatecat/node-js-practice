@@ -91,17 +91,17 @@ app.get('/blogs/create', (req, res) => {
     res.render('create', { title: 'Create a new blog' });
   });
 
-  app.post('/blogs', (req, res) => {
-    const blog = new Blog(req.body);
-  
-    blog.save()
-      .then(result => {
-        res.redirect('/blogs');
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  });
+app.post('/blogs', (req, res) => {
+  const blog = new Blog(req.body);
+
+  blog.save()
+    .then(result => {
+      res.redirect('/blogs');
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
 
 
 // 404 page
