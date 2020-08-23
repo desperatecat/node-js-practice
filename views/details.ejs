@@ -22,7 +22,7 @@
         method: 'DELETE',
       })
       .then(response => response.json())  //json data comes back from b/e, and this .then will return another promise that passes json data to a javascript object 
-      .then(data => window.location.href = data.redirect)
+      .then(data => window.location.href = data.redirect) //data is the actual js object
       .catch(err => console.log(err));
     });
     
