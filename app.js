@@ -77,13 +77,13 @@ app.get('/about', (req, res) => {
 
 //blog routes
 app.get('/blogs', (req, res) => {
-    Blog.find().sort({ createdAt: -1 })
-      .then(result => {
-        res.render('index', { blogs: result, title: 'All blogs' })
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  Blog.find().sort({ createdAt: -1 })
+    .then(result => {
+      res.render('index', { blogs: result, title: 'All blogs' })
+    })
+    .catch(err => {
+      console.log(err);
+    });
 
 });
 
@@ -114,6 +114,17 @@ app.get('/blogs/:id', (req, res) => {
     });
 });
 
+app.delete('/blogs/:id', (req, res) => {
+  const id = req.params.id;
+  Blog.findByIdAndDelete(id)
+    .then(result => {
+      //send json data back to browser, then redirect from the f/e
+      res.json({ redirect: '/blogs' })
+    })
+    .catch(err => {
+      console.log(err)
+    });
+});
 
 // 404 page
 app.use((req, res) => {
