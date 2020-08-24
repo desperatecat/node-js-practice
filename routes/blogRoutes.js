@@ -1,4 +1,9 @@
-app.get('/blogs', (req, res) => {
+const express =require('express');
+
+const router = express.Router();
+
+
+router.get('/blogs', (req, res) => {
     Blog.find().sort({ createdAt: -1 })
       .then(result => {
         res.render('index', { blogs: result, title: 'All blogs' })
@@ -9,11 +14,11 @@ app.get('/blogs', (req, res) => {
   
   });
   
-  app.get('/blogs/create', (req, res) => {
-      res.render('create', { title: 'Create a new blog' });
+  router.get('/blogs/create', (req, res) => {
+      res.render('create', { title: 'Create a new blog' } );
     });
   
-  app.post('/blogs', (req, res) => {
+  router.post('/blogs', (req, res) => {
     const blog = new Blog(req.body);
   
     blog.save()
@@ -25,7 +30,7 @@ app.get('/blogs', (req, res) => {
       });
   });
   
-  app.get('/blogs/:id', (req, res) => {
+  router.get('/blogs/:id', (req, res) => {
     const id = req.params.id;
     Blog.findById(id)
       .then(result => {
@@ -36,7 +41,7 @@ app.get('/blogs', (req, res) => {
       });
   });
   
-  app.delete('/blogs/:id', (req, res) => {
+  router.delete('/blogs/:id', (req, res) => {
     const id = req.params.id;
     Blog.findByIdAndDelete(id)
       .then(result => {
