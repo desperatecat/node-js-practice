@@ -24,48 +24,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-// mongoose & mongo tests
-app.get('/add-blog', (req, res) => {
-
-  //create document
-  const blog = new Blog({
-    title: 'new blog 2',
-    snippet: 'about my new blog',
-    body: 'more about my new blog'
-  })
-
-  //sync save to DB
-  blog.save()
-    .then(result => {
-      res.send(result);
-    })
-    .catch(err => {
-      console.log(err);
-    });
-});
-
-
-app.get('/all-blogs', (req, res) => {
-  Blog.find()
-    .then(result => {
-      res.send(result);
-    })
-    .catch(err => {
-      console.log(err);
-    })
-});
-
-app.get('/single-blog', (req, res) => {
-  Blog.findById('5f407aaa95931c12ec631191')
-    .then(result => {
-      res.send(result);
-    })
-    .catch(err => {
-      console.log(err);
-    });
-});
-
 //routes
 app.get('/', (req, res) => {
     res.redirect('/blogs');
@@ -76,7 +34,7 @@ app.get('/about', (req, res) => {
 });
 
 //blog routes
-app.use(blogRoutes);
+app.use('/blogs', blogRoutes);
 
 // 404 page
 app.use((req, res) => {
