@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const Blog = require('./models/blog');
+const blogRoutes = require('./routes/blogRoutes');
 
 const app = express();
 
@@ -75,6 +75,8 @@ app.get('/about', (req, res) => {
     res.render('about', { title: 'About' });
 });
 
+//blog routes
+app.use(blogRoutes);
 
 // 404 page
 app.use((req, res) => {

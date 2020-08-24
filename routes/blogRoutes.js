@@ -1,4 +1,5 @@
 const express =require('express');
+const Blog = require('../models/blog');
 
 const router = express.Router();
 
@@ -53,3 +54,5 @@ router.get('/blogs', (req, res) => {
       });
   });
   
+
+  module.exports = router;
